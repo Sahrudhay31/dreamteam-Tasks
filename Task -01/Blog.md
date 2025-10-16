@@ -1,5 +1,5 @@
-CLI & Git Mastery: Bandit, Git Exercises, and Learn Git Branching
-Bandit Walkthrough (Levels 0-20)
+## CLI & Git Mastery: Bandit, Git Exercises, and Learn Git Branching
+# Bandit Walkthrough (Levels 0-20)
 Myself almost completed upto 20 bandit levels and 10 git exercises.Very starting bandit levels and git exercises are very easy and going on it goes very harder and harder, if we stops at any level we cannot go furthur we need to clear the level.In level 8 of bandit there is a function called "grep" in level 8 it very easy to use but in the furthur level we  cannot use it properly.
 
 Main concepts I have mastered from this task are 
@@ -27,7 +27,7 @@ Interactive rebasing for clean history
 
 Resolving rebase conflicts
 
-In CLI Mastery(Bandit)
+# In CLI Mastery(Bandit)
 correct use of the ls , cd understanding absolute paths and the relative paths
 Handling special characters in filenames
 grep for pattern searching.
