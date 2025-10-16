@@ -1,7 +1,6 @@
-## CLI & Git Mastery: Bandit, Git Exercises, and Learn Git Branching
-# Bandit Walkthrough (Levels 0-20)
+# CLI & Git Mastery: Bandit, Git Exercises, and Learn Git Branching
+## Bandit Walkthrough (Levels 0-20)
 Myself almost completed upto 20 bandit levels and 10 git exercises.Very starting bandit levels and git exercises are very easy and going on it goes very harder and harder, if we stops at any level we cannot go furthur we need to clear the level.In level 8 of bandit there is a function called "grep" in level 8 it very easy to use but in the furthur level we  cannot use it properly.
-
 Main concepts I have mastered from this task are 
 Basic Branching
 
@@ -27,7 +26,7 @@ Interactive rebasing for clean history
 
 Resolving rebase conflicts
 
-# In CLI Mastery(Bandit)
+## In CLI Mastery(Bandit)
 correct use of the ls , cd understanding absolute paths and the relative paths
 Handling special characters in filenames
 grep for pattern searching.
@@ -36,6 +35,10 @@ tr for text transformation.
 strings for the binary file analysis.
 file command for type identification,find with complex criteria
 SSH key management.
+### Key Commands Learned
+```bash
+cat, ls -a, grep, find, sort, uniq, base64, xxd, tr, tar, gzip, ssh, nc, diff, chmod, openssl
+```
 
 Atomic commits for better history,Meaningful commit messages,Regular pushing to remote.
 Feature branch workflow,Release branching,Understanding merge conflicts,Pull request workflows
@@ -47,6 +50,27 @@ Git Mastery - Efficient team collaboration and code management
 Problem Solving - Systematic approach to troubleshooting
 
 Security Awareness - Better understanding of system security
+
+# Git Exercises: Version Control Adventures
+Besides Bandit, I've been practicing Git through various exercises. Here's what I've covered:
+git init
+git add .
+git commit -m "Initial commit"
+
+## Branching and Merging
+
+Created feature branches, switched between them, and merged. Learned: git branch, git checkout, git merge.
+Exercise: Fix a bug on a separate branch and merge it back.
+
+## Final Thoughts
+Completing 13 Bandit levels has built my Linux confidence, and Git exercises are making me a better developer. Next up: Finish Bandit 14-20 and dive into rebasing.
+
+
+
+
+
+
+
 
 
 
