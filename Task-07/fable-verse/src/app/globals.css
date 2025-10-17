@@ -1,0 +1,10 @@
+/* @tailwind directives removed because Tailwind CSS is not configured or not being used */
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* Tailwind's bg-gray-400 */
+  border-radius: 0.25rem;    /* Tailwind's rounded */
+}
