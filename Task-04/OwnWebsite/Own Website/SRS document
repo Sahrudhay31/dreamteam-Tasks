@@ -1,0 +1,238 @@
+# Software Requirements Specification (SRS) for Fable Book Social Platform
+
+## 1. Introduction
+
+### 1.1 Purpose
+This document specifies the requirements for Fable, a social platform for book enthusiasts that enables users to discover, review, and discuss books while connecting with a community of readers.
+
+### 1.2 Project Scope
+Fable is a web-based social platform that allows users to:
+- Create personal reading lists and track reading progress
+- Write and share book reviews and ratings
+- Discover new books through recommendations and community activity
+- Follow other readers and interact with their content
+- Search and explore books by various criteria
+
+### 1.3 Definitions and Acronyms
+- **SRS**: Software Requirements Specification
+- **UI**: User Interface
+- **UX**: User Experience
+- **API**: Application Programming Interface
+- **CRUD**: Create, Read, Update, Delete operations
+
+## 2. Overall Description
+
+### 2.1 Product Perspective
+Fable is an independent web application that operates as a social network specifically designed for book enthusiasts, similar to Goodreads but with a modern, user-friendly interface.
+
+### 2.2 Product Features
+- User registration and authentication
+- Book search and discovery
+- Review and rating system
+- Reading list management
+- Social interactions (following, liking, commenting)
+- Personalized recommendations
+
+### 2.3 User Classes and Characteristics
+- **Casual Readers**: Browse books, read reviews, occasional ratings
+- **Active Readers**: Regularly update reading lists, write detailed reviews
+- **Book Influencers**: Heavy users who create content and build followers
+- **Administrators**: Manage content, users, and platform operations
+
+### 2.4 Operating Environment
+- **Frontend**: Modern web browsers (Chrome, Firefox, Safari, Edge)
+- **Backend**: (Not implemented in prototype) Would require server infrastructure
+- **Database**: (Not implemented in prototype) Would require database system
+
+### 2.5 Design and Implementation Constraints
+- Responsive design for mobile and desktop
+- Modern CSS frameworks and vanilla JavaScript
+- Future-proof architecture for backend integration
+
+## 3. System Features and Requirements
+
+### 3.1 User Authentication
+
+#### 3.1.1 Description
+Users can create accounts, log in, and manage their profiles through modal-based interfaces.
+
+#### 3.1.2 Functional Requirements
+- **FR-001**: User registration with email, name, and password
+- **FR-002**: User login with email and password
+- **FR-003**: Modal-based authentication interface
+- **FR-004**: Session management and profile display
+- **FR-005**: Form validation for authentication inputs
+
+### 3.2 Book Discovery and Search
+
+#### 3.2.1 Description
+Users can browse featured books and search for specific titles, authors, or genres.
+
+#### 3.2.2 Functional Requirements
+- **FR-006**: Display featured books in grid layout
+- **FR-007**: Search functionality with real-time suggestions
+- **FR-008**: Book details display (title, author, rating)
+- **FR-009**: Responsive book grid for different screen sizes
+- **FR-010**: Book cover placeholder with consistent styling
+
+### 3.3 Review and Rating System
+
+#### 3.3.1 Description
+Users can read, write, and interact with book reviews through an intuitive interface.
+
+#### 3.3.2 Functional Requirements
+- **FR-011**: Display recent reviews with user information
+- **FR-012**: Star-based rating system visualization
+- **FR-013**: Review interaction (like, comment, save)
+- **FR-014**: Review metadata (date, reviewer details)
+- **FR-015**: Review content formatting and display
+
+### 3.4 Reading List Management
+
+#### 3.4.1 Description
+Users can organize books into personalized reading lists and track their reading progress.
+
+#### 3.4.2 Functional Requirements
+- **FR-016**: Display personal reading lists in sidebar
+- **FR-017**: Predefined list categories (Currently Reading, Want to Read, etc.)
+- **FR-018**: Add books to lists from book cards
+- **FR-019**: List item counts and organization
+- **FR-020**: Create new custom reading lists
+
+### 3.5 Social Features
+
+#### 3.5.1 Description
+Users can follow other readers, view their activity, and interact with community content.
+
+#### 3.5.2 Functional Requirements
+- **FR-021**: User profile cards with follow functionality
+- **FR-022**: Follow/Unfollow toggle with visual feedback
+- **FR-023**: User recommendations based on interests
+- **FR-024**: Social interactions (likes, comments on reviews)
+- **FR-025**: Activity feed of followed users
+
+### 3.6 Recommendations System
+
+#### 3.6.1 Description
+Personalized book suggestions based on user preferences and reading history.
+
+#### 3.6.2 Functional Requirements
+- **FR-026**: Display recommended books in sidebar
+- **FR-027**: Book recommendations with ratings
+- **FR-028**: Compact book card layout for recommendations
+- **FR-029**: Genre-based or similarity-based suggestions
+
+## 4. External Interface Requirements
+
+### 4.1 User Interfaces
+
+#### 4.1.1 Layout and Navigation
+- **UI-001**: Fixed header with logo, navigation, and search
+- **UI-002**: Hero section with platform value proposition
+- **UI-003**: Two-column main content layout (responsive)
+- **UI-004**: Consistent footer with site links and information
+
+#### 4.1.2 Visual Design
+- **UI-005**: Color scheme: Primary blue (#4a6fa5), accent orange (#ff9a76)
+- **UI-006**: Consistent card-based design with shadows
+- **UI-007**: Typography hierarchy for readability
+- **UI-008**: Icon integration (Font Awesome) for visual cues
+
+#### 4.1.3 Interactive Elements
+- **UI-009**: Hover effects on interactive elements
+- **UI-010**: Modal windows for authentication
+- **UI-011**: Button states (normal, hover, active)
+- **UI-012**: Responsive navigation for mobile devices
+
+### 4.2 Hardware Interfaces
+- None specified (web-based application)
+
+### 4.3 Software Interfaces
+- **SI-001**: Font Awesome CDN for icons
+- **SI-002**: Future integration with book database APIs
+- **SI-003**: Future integration with authentication services
+
+### 4.4 Communication Interfaces
+- **CI-001**: HTTP/HTTPS for web communication
+- **CI-002**: RESTful API endpoints for future backend
+
+## 5. Non-Functional Requirements
+
+### 5.1 Performance Requirements
+- **PER-001**: Page load time under 3 seconds on average connection
+- **PER-002**: Smooth animations and transitions (300ms)
+- **PER-003**: Responsive design adapting to screen sizes 320px and above
+
+### 5.2 Safety Requirements
+- **SAF-001**: Secure authentication (to be implemented in backend)
+- **SAF-002**: Input validation to prevent XSS attacks
+- **SAF-003**: Password security requirements (to be implemented)
+
+### 5.3 Security Requirements
+- **SEC-001**: User data protection and privacy
+- **SEC-002**: Secure session management
+- **SEC-003**: Protection against CSRF attacks
+
+### 5.4 Software Quality Attributes
+- **QA-001**: Maintainability: Clean, commented code structure
+- **QA-002**: Usability: Intuitive navigation and clear visual hierarchy
+- **QA-003**: Reliability: Consistent performance across browsers
+- **QA-004**: Portability: Cross-browser compatibility
+
+### 5.5 Business Rules
+- **BR-001**: Users must be authenticated to perform social actions
+- **BR-002**: Users can only edit/delete their own content
+- **BR-003**: Book data follows standard ISBN conventions
+
+## 6. Other Requirements
+
+### 6.1 Database Requirements
+*(To be implemented in future versions)*
+- User profiles and authentication data
+- Book metadata and cover images
+- Reviews, ratings, and user interactions
+- Reading lists and user relationships
+
+### 6.2 Implementation Priorities
+
+#### High Priority (Current Prototype)
+- User interface and experience design
+- Frontend functionality and interactions
+- Responsive design implementation
+- Basic authentication flow
+
+#### Medium Priority (Future Development)
+- Backend API development
+- Database design and implementation
+- User authentication system
+- Book data management
+
+#### Low Priority (Future Enhancements)
+- Advanced recommendation algorithms
+- Social features (messaging, groups)
+- Mobile application development
+- Integration with external book APIs
+
+### 6.3 Appendices
+
+#### 6.3.1 Assumptions and Dependencies
+- Modern web browsers with JavaScript enabled
+- Internet connection for CDN resources
+- Future backend development for full functionality
+
+#### 6.3.2 Acronyms and Abbreviations
+- CSS: Cascading Style Sheets
+- HTML: HyperText Markup Language
+- JS: JavaScript
+- UI/UX: User Interface/User Experience
+
+---
+
+## Revision History
+
+| Version | Date | Author | Description |
+|---------|------|--------|-------------|
+| 1.0 | 2023-10-15 | Fable Team | Initial SRS document creation |
+| 1.1 | 2023-10-15 | Fable Team | Added detailed requirements based on prototype |
+
+This SRS document provides comprehensive requirements for the Fable book social platform, covering both the current prototype implementation and future development directions.
