@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fable - Connect Through Stories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b8cbc;
+            --accent: #ff9a76;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            color: var(--primary);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .search-bar {
+            display: flex;
+            margin: 0 20px;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0 15px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-actions button {
+            margin-left: 10px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        /* Book Grid */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .book-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover {
+            height: 250px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .book-info {
+            padding: 15px;
+        }
+
+        .book-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .book-author {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .book-rating {
+            color: var(--warning);
+            margin-bottom: 10px;
+        }
+
+        /* Review Section */
+        .review-card {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .review-content {
+            margin-bottom: 10px;
+        }
+
+        .review-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .review-actions button {
+            background: none;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .review-actions button:hover {
+            color: var(--primary);
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            margin-bottom: 30px;
+        }
+
+        .reading-list {
+            list-style: none;
+        }
+
+        .reading-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .reading-list li:last-child {
+            border-bottom: none;
+        }
+
+        .reading-list .book-icon {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-card:last-child {
+            border-bottom: none;
+        }
+
+        .user-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .user-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .user-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            background: none;
+            color: var(--gray);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 15px 0 0;
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .book-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-book-open"></i>
+                    Fable
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">My Books</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for books, authors, or genres...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="user-actions">
+                    <button class="btn btn-outline" id="loginBtn">Log In</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                    
+                    <div class="user-profile" id="userProfile" style="display: none;">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="User Avatar">
+                        <span>Alex</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Connect Through Stories</h1>
+            <p>Discover new books, share your thoughts, and connect with fellow book lovers on Fable - the social platform for readers.</p>
+            <button class="btn btn-primary" style="background-color: var(--accent); border-color: var(--accent);">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Left Column - Main Content -->
+            <div class="left-column">
+                <!-- Featured Books -->
+                <section class="featured-books">
+                    <h2 class="section-title">Featured Books</h2>
+                    <div class="book-grid">
+                        <!-- Book 1 -->
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <i class="fas fa-book fa-3x"></i>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">The Midnight Library</h3>
+                                <p class="book-author">Matt Haig</p>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>4.5</span>
+                                </div>
+                                <button class="btn btn-outline" style="width: 100%;">Add to List</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Book 2 -->
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <i class="fas fa-book fa-3x"></i>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Project Hail Mary</h3>
+                                <p class="book-author">Andy Weir</p>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>5.0</span>
+                                </div>
+                                <button class="btn btn-outline" style="width: 100%;">Add to List</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Book 3 -->
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <i class="fas fa-book fa-3x"></i>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">Klara and the Sun</h3>
+                                <p class="book-author">Kazuo Ishiguro</p>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>4.0</span>
+                                </div>
+                                <button class="btn btn-outline" style="width: 100%;">Add to List</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Book 4 -->
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <i class="fas fa-book fa-3x"></i>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">The Invisible Life of Addie LaRue</h3>
+                                <p class="book-author">V.E. Schwab</p>
+                                <div class="book-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>4.5</span>
+                                </div>
+                                <button class="btn btn-outline" style="width: 100%;">Add to List</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Recent Reviews -->
+                <section class="recent-reviews">
+                    <h2 class="section-title">Recent Reviews</h2>
+                    
+                    <!-- Review 1 -->
+                    <div class="card review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="reviewer-name">Sarah Johnson</div>
+                                <div class="review-date">Reviewed "The Midnight Library" • 2 days ago</div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>This book completely changed my perspective on life and the choices we make. The concept of the midnight library is both creative and thought-provoking. Highly recommend to anyone feeling stuck or questioning their life path.</p>
+                        </div>
+                        <div class="review-actions">
+                            <button><i class="far fa-thumbs-up"></i> 24</button>
+                            <button><i class="far fa-comment"></i> 8</button>
+                            <button><i class="far fa-bookmark"></i> Save</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 2 -->
+                    <div class="card review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <div class="reviewer-name">Michael Chen</div>
+                                <div class="review-date">Reviewed "Project Hail Mary" • 5 days ago</div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Andy Weir does it again! This book is a perfect blend of hard science and heartwarming storytelling. The relationship between the main character and Rocky is one of the most unique and touching friendships I've ever read. Couldn't put it down!</p>
+                        </div>
+                        <div class="review-actions">
+                            <button><i class="far fa-thumbs-up"></i> 42</button>
+                            <button><i class="far fa-comment"></i> 15</button>
+                            <button><i class="far fa-bookmark"></i> Save</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Right Column - Sidebar -->
+            <div class="right-column">
+                <!-- Reading Lists -->
+                <div class="sidebar-widget card">
+                    <h3 class="section-title">My Reading Lists</h3>
+                    <ul class="reading-list">
+                        <li><i class="fas fa-book book-icon"></i> Currently Reading (3)</li>
+                        <li><i class="fas fa-bookmark book-icon"></i> Want to Read (12)</li>
+                        <li><i class="fas fa-check-circle book-icon"></i> Finished (47)</li>
+                        <li><i class="fas fa-heart book-icon"></i> Favorites (8)</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%; margin-top: 10px;">Create New List</button>
+                </div>
+                
+                <!-- Recommended Users -->
+                <div class="sidebar-widget card">
+                    <h3 class="section-title">Readers You May Like</h3>
+                    
+                    <div class="user-card">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="User Avatar">
+                        <div class="user-info">
+                            <h4>Emma Wilson</h4>
+                            <p>Sci-fi & Fantasy enthusiast</p>
+                        </div>
+                        <button class="btn btn-outline" style="margin-left: auto;">Follow</button>
+                    </div>
+                    
+                    <div class="user-card">
+                        <img src="https://i.pravatar.cc/150?img=8" alt="User Avatar">
+                        <div class="user-info">
+                            <h4>James Rodriguez</h4>
+                            <p>Historical fiction lover</p>
+                        </div>
+                        <button class="btn btn-outline" style="margin-left: auto;">Follow</button>
+                    </div>
+                    
+                    <div class="user-card">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="User Avatar">
+                        <div class="user-info">
+                            <h4>Sophia Lee</h4>
+                            <p>Mystery & Thriller expert</p>
+                        </div>
+                        <button class="btn btn-outline" style="margin-left: auto;">Follow</button>
+                    </div>
+                </div>
+                
+                <!-- Book Recommendations -->
+                <div class="sidebar-widget card">
+                    <h3 class="section-title">Recommended For You</h3>
+                    <div class="book-card" style="display: flex; margin-bottom: 15px;">
+                        <div class="book-cover" style="width: 80px; height: 120px; flex-shrink: 0;">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="book-info" style="padding: 0 0 0 15px;">
+                            <h3 class="book-title">The Seven Husbands of Evelyn Hugo</h3>
+                            <p class="book-author">Taylor Jenkins Reid</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card" style="display: flex;">
+                        <div class="book-cover" style="width: 80px; height: 120px; flex-shrink: 0;">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="book-info" style="padding: 0 0 0 15px;">
+                            <h3 class="book-title">Piranesi</h3>
+                            <p class="book-author">Susanna Clarke</p>
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Fable</h3>
+                    <p>Connect with fellow book lovers, discover new reads, and share your literary journey.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Authors</a></li>
+                        <li><a href="#">Genres</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Account</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">My Books</a></li>
+                        <li><a href="#">Reading Lists</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-goodreads"></i> Goodreads</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Fable. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeLoginModal">&times;</button>
+            <h2>Log In to Fable</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeSignupModal">&times;</button>
+            <h2>Join Fable</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" class="form-control" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 15px;">Already have an account? <a href="#" id="switchToLogin">Log in</a></p>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const closeSignupModal = document.getElementById('closeSignupModal');
+        const switchToSignup = document.getElementById('switchToSignup');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const userProfile = document.getElementById('userProfile');
+
+        // Show Login Modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        // Show Signup Modal
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+        });
+
+        // Close Modals
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        closeSignupModal.addEventListener('click', () => {
+            signupModal.style.display = 'none';
+        });
+
+        // Switch between Login and Signup
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'flex';
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+
+        // Form Submissions
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you would handle authentication here
+            alert('Login functionality would be implemented here!');
+            loginModal.style.display = 'none';
+            // Show user profile after login
+            document.querySelector('.user-actions button').style.display = 'none';
+            document.querySelector('.user-actions button:nth-child(2)').style.display = 'none';
+            userProfile.style.display = 'flex';
+        });
+
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you would handle registration here
+            alert('Signup functionality would be implemented here!');
+            signupModal.style.display = 'none';
+            // Show user profile after signup
+            document.querySelector('.user-actions button').style.display = 'none';
+            document.querySelector('.user-actions button:nth-child(2)').style.display = 'none';
+            userProfile.style.display = 'flex';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+        });
+
+        // Add book to list functionality
+        const addToListButtons = document.querySelectorAll('.book-card .btn');
+        addToListButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const bookTitle = this.closest('.book-card').querySelector('.book-title').textContent;
+                alert(`"${bookTitle}" has been added to your reading list!`);
+            });
+        });
+
+        // Follow user functionality
+        const followButtons = document.querySelectorAll('.user-card .btn');
+        followButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const userName = this.closest('.user-card').querySelector('h4').textContent;
+                if (this.textContent === 'Follow') {
+                    this.textContent = 'Following';
+                    this.classList.remove('btn-outline');
+                    this.classList.add('btn-primary');
+                    alert(`You are now following ${userName}`);
+                } else {
+                    this.textContent = 'Follow';
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-outline');
+                    alert(`You have unfollowed ${userName}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
