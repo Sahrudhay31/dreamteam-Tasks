@@ -228,12 +228,6 @@ Personalized book suggestions based on user preferences and reading history.
 
 ---
 
-## Revision History
-
-| Version | Date | Author | Description |
-|---------|------|--------|-------------|
-| 1.0 | 2023-10-15 | Fable Team | Initial SRS document creation |
-| 1.1 | 2023-10-15 | Fable Team | Added detailed requirements based on prototype |
 
 This SRS document provides comprehensive requirements for the Fable book social platform, covering both the current prototype implementation and future development directions.
 
