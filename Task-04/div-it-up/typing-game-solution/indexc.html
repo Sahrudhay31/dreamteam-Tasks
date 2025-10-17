@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Typing game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Typing game!</h1>
+  <p>Practice your typing skills with a quote from Sherlock Holmes. Click <b>Start</b> to begin!</p>
+  <p id="quote"></p>
+  <p id="message"></p>
+  <div>
+    <input type="text" aria-label="current word" id="typed-value" disabled />
+    <button type="button" id="start">Start</button>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>🎉 Congratulations!</h2>
+      <p id="finalTime"></p>
+      <p>Best Time: <span id="highScore"></span> seconds</p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
